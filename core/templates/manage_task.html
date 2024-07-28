@@ -1,0 +1,18 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Managing the task of the user {{user_details.first_name}}</title>
+    <h1>Managing the task of the user {{user_details.first_name}}</h1>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Tasks action</h2>
+        <h3><a href="{%url 'core:task_creation' user_details.slug%}">Create Task</a></h3>
+        <h3><a href="{%url 'core:task_deletion' user_details.slug%}">Delete Task</a></h3>
+        <h3><a href="{%url 'core:task_edit' user_details.slug%}">Edit Task</a></h3>
+        <h3><a href="{%url 'core:task_view' user_details.slug%}">View</a></h3>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manager Action</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>User's details</h2>
+        <table style = 'width= 100%'>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>User status</th>
+                <th>Account Approval Status</th>
+                <th>User task management</th>
+            </tr>
+            {%for user_detail in user_details%}
+            <tr>
+                <td>{{user_detail.first_name}}</td>
+                <td>{{user_detail.email}}</td>
+                <td>{{user_detail.is_active}}</td>
+                <td>{{user_detail.is_approved}}</td>
+                <td>
+                    <a href="{%url 'core:manage_task' user_detail.slug %}">Manage Task</a>
+
+                </td>
+            </tr>
+            {%endfor%}
+    </div>
+</body>
+</html>

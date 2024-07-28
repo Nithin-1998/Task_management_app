@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Profile</h2>
+        <div class="profile-header">
+            <img src="{% if user.images %}{{user.images.url}}{% else %}{{'default_profile_picture.png'}}{% endif %}" alt="Profile Picture" class="profile-picture">
+            <p>Welcome, {{ user.username }}!</p>
+        </div>
+        <a href="{% url 'core:profile_edit' %}">Edit profile</a>
+        <h2>Actions</h2>
+        {% if user.role == 'user' %}
+            <a href="{% url 'core:task_view' user.slug %}">View task</a>
+            <a href="{% url 'core:task_edit' user.slug %}">Edit task</a>
+        {% endif %}
+        {% if user.role == 'manager' %}
+            <a href="{% url 'core:manager_action' %}">User's task management</a>
+        {% endif %}
+    </div>
+</body>
+</html>

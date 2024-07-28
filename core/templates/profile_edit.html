@@ -1,0 +1,19 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Profile</h2>
+        <p>Welcome, {{ user.username }}!</p>
+        <form method = POST enctype = "multipart/form-data">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button type = "submit">submit</button>
+        </form>
+    </div>
+</body>
+</html>

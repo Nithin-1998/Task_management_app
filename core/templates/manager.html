@@ -1,0 +1,15 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manager View</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Manager Dashboard</h2>
+        <p>Welcome, {{ user.username }}!</p>
+        <h3><a href= "{%url 'core:manager_action'%}">Actions</a></h3>
+    </div>
+</body>
+</html>

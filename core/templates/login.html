@@ -1,0 +1,22 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        <h2> For admin please click the below link </h2>
+        <li><a href="{% url 'admin:index' %}">Admin login</a></li>
+        <h2> New user please register </h2>
+        <li><a href="{%url 'core:register' %}">Register</a></li>
+    </div>
+</body>
+</html>

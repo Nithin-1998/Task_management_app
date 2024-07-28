@@ -1,0 +1,24 @@
+{%load static%}
+<!DOCTYPE html>
+<head>
+    <title>Task Deletion</title>
+    <link rel="stylesheet" type = "text/css" href = "{%static 'core/styles.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h2>Are you sure to delete the task item of the user {{user.first_name}}</h2>
+        <h2>If yes please click sumbit below</h2>
+        <form method = "POST">
+            {%csrf_token%}
+            {%if form%}
+            {%for forms in form%}
+                <h2>{{forms.title}}</h2>
+                <button type = "submit" name= "{{forms.prefix}}">Delete the task</button>
+            {%endfor%}
+            {%else%}
+                <h2>There is no task available for  {{user.first_name}} </h2>
+            {%endif%}
+        </form>
+    </div>
+</body>
+</html>

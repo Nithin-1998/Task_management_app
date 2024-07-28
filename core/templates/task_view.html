@@ -1,0 +1,21 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Creation</title>
+    <link rel="stylesheet" type = "text/css" href = "{%static 'core/styles.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h2>Please view  the task below for user {{user_details.first_name}}</h2>
+        {%if form%}
+        {%for forms in form%}
+            {{forms.as_p}}
+        {%endfor%}
+        {%else%}
+            <h2>There is no task available for  {{user.first_name}} </h2>
+        {%endif%}
+    </div>
+        
+</body>
+</html>

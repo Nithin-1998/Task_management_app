@@ -1,0 +1,16 @@
+<!-- core/templates/core/logout.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+</head>
+<body>
+    <h2>Are you sure you want to logout?</h2>
+    <form method="post" action = "{%url 'core:logout'%}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    <a href="{% url 'core:home' %}">Cancel</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!-- core/templates/core/home.html -->
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Home Page</h1>
+        <h2>Please Navigate to the Profile for Actions in ToDo and maintaining profile</h2>
+        <ul>
+            <li><a href="{% url 'core:logout' %}">Logout</a></li>
+            <li><a href="{% url 'core:admin_view' %}">Admin View</a></li>
+            <li><a href="{% url 'core:manager_view' %}">Manager View</a></li>
+            <li><a href="{% url 'core:profile' %}">Profile</a></li>
+        </ul>
+    </div>
+</body>
+</html>
