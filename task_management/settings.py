@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from decouple import config, Csv
-import django_heroku
-import dj_database_url
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -153,8 +151,6 @@ LOGOUT_REDIRECT_URL = 'login'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR/'media'
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
 
 # Cloudinary configurations
 CLOUDINARY_STORAGE = {
