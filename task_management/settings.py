@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'task_management.urls'
@@ -84,7 +85,7 @@ WSGI_APPLICATION = 'task_management.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-if DEBUG:
+if DEBUG == True:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -95,7 +96,7 @@ if DEBUG:
             'PORT': config('DB_PORT'),
         }
     }
-else:
+elif DEBUG == False:
     DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
@@ -138,9 +139,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'core/static',
-]
+if DEBUG == True:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'core/static',
+    ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
@@ -172,3 +174,7 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+#static file collection in the prod
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
